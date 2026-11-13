@@ -3,17 +3,14 @@
  * Uses official SVG paths from simple-icons for eBay, PayPal, Facebook,
  * Google, and Meta. Vanta uses a clean letter treatment (not in simple-icons).
  */
-
-// simple-icons paths are viewBox 24×24, white fill on brand bg
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const icons = require("simple-icons");
+import { siEbay, siPaypal, siFacebook, siGoogle, siMeta } from "simple-icons";
 
 const config: Record<string, { path: string; bg: string }> = {
-  ebay:     { path: icons.siEbay.path,     bg: "#E53238" },
-  paypal:   { path: icons.siPaypal.path,   bg: "#003087" },
-  facebook: { path: icons.siFacebook.path, bg: "#1877F2" },
-  google:   { path: icons.siGoogle.path,   bg: "#4285F4" },
-  meta:     { path: icons.siMeta.path,     bg: "#0467DF" },
+  ebay:     { path: siEbay.path,     bg: "#E53238" },
+  paypal:   { path: siPaypal.path,   bg: "#003087" },
+  facebook: { path: siFacebook.path, bg: "#1877F2" },
+  google:   { path: siGoogle.path,   bg: "#4285F4" },
+  meta:     { path: siMeta.path,     bg: "#0467DF" },
 };
 
 interface CompanyLogoProps {
