@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ExperienceSlider from "@/components/ExperienceSlider";
+import CompanyLogo from "@/components/CompanyLogo";
 
 export const metadata: Metadata = {
   title: "Aamod Sathe",
@@ -8,24 +9,19 @@ export const metadata: Metadata = {
     "Data & AI leader with 20+ years at Google, Meta, PayPal, and Vanta. Builder of AI products.",
 };
 
-const companies = [
-  {
-    logos: [
-      { letter: "e", bg: "#E53238" },
-      { letter: "P", bg: "#003087" },
-    ],
-    name: "eBay · PayPal",
-    years: "2005–2013",
-  },
-  { logos: [{ letter: "f", bg: "#1877F2" }], name: "Facebook", years: "2013–2015" },
-  { logos: [{ letter: "G", bg: "#4285F4" }], name: "Google", years: "2015–2020" },
-  { logos: [{ letter: "M", bg: "#0866FF" }], name: "Meta", years: "2020–2026" },
-  {
-    logos: [{ letter: "V", bg: "#3B82F6" }],
-    name: "Vanta",
-    years: "2026–Present",
-    current: true,
-  },
+type CompanyKey = "ebay" | "paypal" | "facebook" | "google" | "meta" | "vanta";
+
+const companies: {
+  keys: CompanyKey[];
+  name: string;
+  years: string;
+  current?: boolean;
+}[] = [
+  { keys: ["ebay", "paypal"], name: "eBay · PayPal", years: "2005–2013" },
+  { keys: ["facebook"],       name: "Facebook",      years: "2013–2015" },
+  { keys: ["google"],         name: "Google",        years: "2015–2020" },
+  { keys: ["meta"],           name: "Meta",          years: "2020–2026" },
+  { keys: ["vanta"],          name: "Vanta",         years: "2026–Present", current: true },
 ];
 
 const metrics = [
@@ -115,19 +111,8 @@ export default function HomePage() {
           {companies.map((co) => (
             <div key={co.name} className="flex-1 flex flex-col items-center">
               <div className="flex gap-1.5 mb-2.5">
-                {co.logos.map((logo) => (
-                  <div
-                    key={logo.letter}
-                    className="w-[38px] h-[38px] rounded-[9px] flex items-center justify-center text-[17px] font-bold text-white flex-shrink-0"
-                    style={{
-                      background: logo.bg,
-                      boxShadow: co.current
-                        ? "0 0 0 3px rgba(59,130,246,0.3)"
-                        : undefined,
-                    }}
-                  >
-                    {logo.letter}
-                  </div>
+                {co.keys.map((key) => (
+                  <CompanyLogo key={key} company={key} glow={co.current} />
                 ))}
               </div>
               <span
