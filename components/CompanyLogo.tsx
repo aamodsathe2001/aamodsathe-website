@@ -55,21 +55,14 @@ export default function CompanyLogo({
     );
   }
 
-  // Vanta — styled letter since it's not in simple-icons
+  // Vanta — use the official mascot logo
   return (
-    <div style={containerStyle}>
-      <span
-        style={{
-          color: "white",
-          fontSize: Math.round(size * 0.46),
-          fontWeight: 700,
-          letterSpacing: "-0.03em",
-          lineHeight: 1,
-          fontFamily: "var(--font-geist-sans), sans-serif",
-        }}
-      >
-        V
-      </span>
+    <div style={{ ...containerStyle, background: "none", overflow: "hidden" }}>
+      <img
+        src="/vanta-logo.jpeg"
+        alt="Vanta"
+        style={{ width: size, height: size, objectFit: "cover", display: "block" }}
+      />
     </div>
   );
 }
