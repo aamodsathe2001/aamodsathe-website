@@ -36,13 +36,41 @@ export const metadata: Metadata = {
     title: "Aamod Sathe — Data & AI Leader",
     description:
       "Data & AI leader with 20+ years at Google, Meta, PayPal, and Vanta. Builder of AI products.",
+    images: [{ url: "/aamod-sathe.jpeg", width: 400, height: 400, alt: "Aamod Sathe" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Aamod Sathe — Data & AI Leader",
     description:
       "Data & AI leader with 20+ years at Google, Meta, PayPal, and Vanta.",
+    images: ["/aamod-sathe.jpeg"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Aamod Sathe",
+  url: "https://aamodsathe.com",
+  image: "https://aamodsathe.com/aamod-sathe.jpeg",
+  jobTitle: "Head of Data & Analytics",
+  worksFor: { "@type": "Organization", name: "Vanta" },
+  alumniOf: [
+    { "@type": "Organization", name: "Google" },
+    { "@type": "Organization", name: "Meta" },
+    { "@type": "Organization", name: "PayPal" },
+    { "@type": "Organization", name: "eBay" },
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/aamodsathe",
+  ],
+  description:
+    "Data & AI leader with 20+ years at Google, Meta, PayPal, and Vanta. Builder of AI products.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -51,6 +79,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`dark ${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <Nav />
         <main className="flex-1">{children}</main>

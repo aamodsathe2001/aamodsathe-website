@@ -29,8 +29,35 @@ export default async function BlogPostPage({
   const post = getPost(slug);
   if (!post) notFound();
 
+  const blogPostSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    url: `https://aamodsathe.com/blog/${slug}`,
+    author: {
+      "@type": "Person",
+      name: "Aamod Sathe",
+      url: "https://aamodsathe.com",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Aamod Sathe",
+      url: "https://aamodsathe.com",
+    },
+    image: "https://aamodsathe.com/aamod-sathe.jpeg",
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://aamodsathe.com/blog/${slug}` },
+  };
+
   return (
     <div className="container-page py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
+
       <Link
         href="/blog"
         className="text-xs text-muted-foreground hover:text-foreground transition-colors mb-10 inline-block"
