@@ -1,0 +1,59 @@
+---
+title: "Auditing the Agent: A Framework for Challenging AI Outputs and Protecting Data Trust"
+date: "2026-11-17"
+description: "A framework for challenging AI outputs and protecting data trust in an era of autonomous agents."
+---
+
+Years ago, I worked for an exceptionally sharp leader who had very little technical background, yet the data teams reported directly to her. She could not tell a left join from a full join to save her life. Still, she taught me more about data leadership, and leadership in general, than almost any other manager I have worked with.
+
+Her superpower was an instinct for running what she called a "sniff test." Whenever a team presented an analysis, she would quickly probe a few core themes. If she sensed the presenter had not cleared her sniff bar on the first question, she would dig. And she would dig relentlessly. If you forced her to do that once, your next five analyses were treated as guilty until proven innocent.
+
+I still remember how she handled a chart that looked completely normal on the surface, tracking right along the expected trendline except for a minor dip in March of the previous year. She zeroed in on that single data point and asked her sniff question: "What happened there, and are you sure the data is accurate?"
+
+If your answer was, "Yes, a specific product change happened in March, and we verified the accuracy by spot-checking ten rows randomly," you were fine.
+
+If your answer was, "It did not look large enough to matter, so we did not investigate," you were in for a long afternoon. The rapid-fire questions would immediately follow. Which geography drove that dip? Was it uniform across the funnel or isolated to a specific experiment? Did we ship a platform or software release in March, and what changed? You had to go track down every single answer and bring back four follow-up analyses clearing her sniff tests just to get back to neutral.
+
+### Why That Leader Was Built for the AI Era
+
+That leader is no longer active in tech, yet someone with her exact mindset, even without a coding background, was practically built for the AI era.
+
+Technical coding ability only ever gated how fast a team could move. True leadership effectiveness always came down to asking sharp questions, stepping into the shoes of your audience, anticipating their skepticism, and having the granular details ready before you walk into the room. Today, those instincts are a hundred times more valuable than they have ever been.
+
+Over the past few weeks, we have explored how data teams are shifting from producing boilerplate code to orchestrating systems and shipping full-loop prototypes. When AI generates SQL queries, statistical summaries, and executive readouts in seconds, the bottleneck moves entirely to verification.
+
+As a data leader right now, you face a stark choice. Either you personally become the human pull-request bottleneck reviewing every single output, or your team's reputation takes a nosedive for shipping unverified AI slop filled with unclear logic and inaccurate numbers. In the data business, losing credibility is a kiss of death. Once stakeholders stop trusting your numbers, it takes years to earn that trust back.
+
+### The Industry Reality: Silent Failures at Scale
+
+Recent industry research shows just how widespread this tension has become. In a global survey of more than 800 data leaders, 75% reported worrying about trust in AI agent deployments, and 95% admitted they cannot fully trace how their AI systems arrive at decisions.
+
+Technical benchmarks explain why that anxiety is warranted. While frontier models routinely score above 90% on tidy, academic SQL tests, their accuracy drops sharply when confronted with messy, real-world enterprise schemas. Even more concerning is how these systems fail. AI agents rarely crash loudly with an obvious syntax error. Their most dangerous failure mode is silent failure, generating syntactically valid queries with subtle join mistakes, missing exclusions, or broken metric definitions that cheerfully return a plausible-looking wrong number.
+
+If an analyst or an automated agent hands an executive a polished chart built on a silent join error, that number can easily make its way into a board deck before anyone catches it.
+
+### Four Ways to Audit the Agent and Protect Data Trust
+
+To keep moving at AI speed without sacrificing rigor, data leaders need a deliberate auditing framework. Here are four practical habits I am instilling in my teams:
+
+**1. Cultivate a Culture of Healthy Skepticism** Every person on your team should treat every AI-generated output as inherently flawed until proven otherwise. When an analyst or data scientist uses an AI agent to pull data or build a model, their primary job is to brainstorm all the reasons that output might be wrong and systematically disprove each hypothesis. Did a join duplicate rows and inflate counts? Did the filter accidentally include test accounts or soft-deleted records? Did the query pull the wrong timestamp column? Make "guilty until proven innocent" your team's default operating standard.
+
+**2. Deepen Business Intuition Beyond Standard Deviations** Knowing how to write code or prompt an agent is table stakes. Practitioners must build a deep, ground-level understanding of how the business actually operates. Most meaningful business insights do not sit neatly within one or two standard deviations of the mean. When an AI-generated analysis spits out a metric that falls outside expected historical bounds, strong business intuition acts as your immediate tripwire. If you do not understand the underlying mechanics of customer acquisition, retention, or revenue recognition, you will never know when an AI agent is hallucinating a trend.
+
+**3. Never Ship an Unexplained Anomaly** Adopt my former manager's rule: no dataset or chart should ever reach an audience without a clear explanation attached to any visible anomaly. Whenever an unexpected spike or dip appears, your team must investigate what is driving it before presenting. Is the movement isolated to a specific geography? Is it skewed by high customer concentration? Was it triggered by an internal product release or an external market shift? Sometimes, given tight timelines, the explanation will be an explicit hypothesis that is still being validated. Sharing an unproven hypothesis is completely fine as long as you label it clearly and show that you did the work to investigate.
+
+**4. Redefine Precision and Recall for Your AI Architecture** In machine learning, precision and recall are foundational metrics. Data leaders need to repurpose both concepts to govern their internal AI analytics stack:
+
+- 
+**Architectural Recall (Coverage):** Map out the exact domains of your business that your AI architecture and semantic layer can safely cover. Industry benchmarks show that routing AI queries through a governed semantic layer with pre-defined business logic pushes accuracy above 90%, whereas queries on unmodeled tables fall off a cliff. If you know your customer support tables are messy and unmodeled in your semantic layer, any AI-generated answer involving support metrics should be treated as immediately suspect and rebuilt manually.
+
+- 
+**Architectural Precision (Tracked Accuracy):** Treat your internal AI tooling like a production product by continuously measuring and tracking its accuracy. Where does it succeed, and where does it consistently stumble? When data leaders track empirical error rates across different query types, they develop a sharp intuition for exactly where to probe and challenge an agent's output.
+
+### The New Bar for Data Leadership
+
+AI has dramatically lowered the cost of producing an answer, which means the value of verifying that answer has skyrocketed. The leaders who win in this environment will be the ones who combine the speed of automated agents with the relentless, detail-oriented curiosity of a great human skeptic.
+
+**I would love to hear from you:** How are you and your teams catching silent errors in AI-generated analyses before they reach stakeholders? What does your internal "sniff test" look like right now?
+
+Share your thoughts in the comments below. Let me know where I might have missed the mark.
