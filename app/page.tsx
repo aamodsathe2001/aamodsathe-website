@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import ExperienceSlider from "@/components/ExperienceSlider";
 import CompanyLogo from "@/components/CompanyLogo";
 
@@ -74,24 +75,34 @@ export default function HomePage() {
         <p className="text-xs font-bold tracking-[0.1em] uppercase text-primary mb-5">
           Sunnyvale, CA · aamodsathe.com
         </p>
-        <h1 className="font-display text-[clamp(44px,7vw,68px)] font-semibold leading-[1.08] tracking-[-0.025em] mb-7">
+        <h1 className="font-display text-[clamp(44px,7vw,68px)] font-semibold leading-[1.08] tracking-[-0.025em] mb-8">
           Aamod Sathe
         </h1>
-        <p className="text-xl text-muted-foreground leading-relaxed max-w-[580px] mb-10">
-          <strong className="text-foreground font-medium">
-            Data &amp; AI leadership
-          </strong>{" "}
-          — I build analytical functions from nothing, scale them, then make
-          them AI-native before anyone asks.
-          <br />
-          <br />
-          20+ years across{" "}
-          <strong className="text-foreground font-medium">
-            Google, Meta, PayPal, and Vanta
-          </strong>
-          . Player-coach: comfortable in the CEO&apos;s business review and
-          writing the SQL when it matters.
-        </p>
+        <div className="flex flex-col sm:flex-row gap-8 items-start mb-10">
+          <Image
+            src="/aamod-sathe.jpeg"
+            alt="Aamod Sathe"
+            width={148}
+            height={148}
+            className="rounded-2xl object-cover flex-shrink-0 ring-1 ring-border"
+            priority
+          />
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-[580px]">
+            <strong className="text-foreground font-medium">
+              Data &amp; AI leadership
+            </strong>{" "}
+            — I build analytical functions from nothing, scale them, then make
+            them AI-native before anyone asks.
+            <br />
+            <br />
+            20+ years across{" "}
+            <strong className="text-foreground font-medium">
+              Google, Meta, PayPal, and Vanta
+            </strong>
+            . Player-coach: comfortable in the CEO&apos;s business review and
+            writing the SQL when it matters.
+          </p>
+        </div>
         <div className="flex gap-2.5 flex-wrap">
           <Link href="/about" className="btn-primary">
             About me →
