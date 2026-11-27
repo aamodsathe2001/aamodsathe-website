@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPost } from "@/lib/blog";
 import type { Metadata } from "next";
 import Link from "next/link";
+import GiscusComments from "@/components/GiscusComments";
 
 export async function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -60,6 +61,10 @@ export default async function BlogPostPage({
 
         <div className="prose-custom">
           <MDXRemote source={post.content} />
+        </div>
+
+        <div className="mt-16 pt-10 border-t border-border">
+          <GiscusComments />
         </div>
       </article>
     </div>
