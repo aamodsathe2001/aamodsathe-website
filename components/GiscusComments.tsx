@@ -5,18 +5,15 @@ import Giscus from "@giscus/react";
 export default function GiscusComments() {
   return (
     <Giscus
-      repo={
-        (process.env.NEXT_PUBLIC_GISCUS_REPO as `${string}/${string}`) ??
-        "aamodsathe2001/aamodsathe-website"
-      }
-      repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID ?? ""}
-      category={process.env.NEXT_PUBLIC_GISCUS_CATEGORY ?? "Announcements"}
-      categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID ?? ""}
+      repo="aamodsathe2001/aamodsathe-website"
+      repoId="R_kgDOVtdO4w"
+      category="Announcements"
+      categoryId="DIC_kwDOVtdO484DMEdp"
       mapping="pathname"
       strict="0"
       reactionsEnabled="1"
       emitMetadata="0"
-      inputPosition="top"
+      inputPosition="bottom"
       theme="dark"
       lang="en"
       loading="lazy"
