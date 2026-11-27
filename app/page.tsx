@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ExperienceSlider from "@/components/ExperienceSlider";
 import CompanyLogo from "@/components/CompanyLogo";
+import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Aamod Sathe",
@@ -59,13 +60,6 @@ const projects = [
   },
 ];
 
-const blogPosts = [
-  "Why I build things with Claude Code on weekends",
-  "The Portal deprecation: what a data-driven product decision actually looks like",
-  "The executive metrics forum: the most underrated analytical function in a company",
-  "Building a semantic metrics layer: why the data contract is the product",
-  "From 12 to 50 DS in a year: what I learned about scaling analytical teams",
-];
 
 export default function HomePage() {
   return (
@@ -237,15 +231,19 @@ export default function HomePage() {
           On AI, data leadership, analytics culture, and building things.
         </p>
         <div className="border border-border rounded-lg overflow-hidden">
-          {blogPosts.map((title, i) => (
+          {getAllPosts().map((post) => (
             <Link
-              key={i}
-              href="/blog"
+              key={post.slug}
+              href={`/blog/${post.slug}`}
               className="flex justify-between items-center px-6 py-[18px] border-b border-border last:border-b-0 hover:bg-secondary transition-colors gap-8"
             >
-              <span className="text-sm font-medium leading-snug">{title}</span>
+              <span className="text-sm font-medium leading-snug">{post.title}</span>
               <span className="text-xs text-muted-foreground whitespace-nowrap flex-shrink-0">
-                Coming soon
+                {new Date(post.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
               </span>
             </Link>
           ))}
